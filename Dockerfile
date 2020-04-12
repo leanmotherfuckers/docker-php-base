@@ -10,6 +10,9 @@ RUN docker-php-ext-install mysqli mbstring zip soap
 RUN docker-php-ext-configure gd --with-gd --with-webp-dir --with-jpeg-dir \
     --with-png-dir --with-zlib-dir --with-xpm-dir --with-freetype-dir
 RUN docker-php-ext-install gd
+RUN apt-get install -y libgmp-dev re2c libmhash-dev libmcrypt-dev file
+RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/ || true
+RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
 RUN docker-php-ext-install exif
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
