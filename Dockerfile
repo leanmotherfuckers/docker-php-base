@@ -2,7 +2,8 @@ FROM php:7.3-apache
 ENV PHP_VERSION=7.3
 WORKDIR /var/www/html
 RUN apt-get update -y && apt-get install -y libzip-dev libxml2-dev libwebp-dev \
-    libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev
+    libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev libbz2-dev \
+    libjpeg-dev libmcrypt-dev git curl
 RUN apt-get update && \
     apt-get install -y \
         zlib1g-dev
